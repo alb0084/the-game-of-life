@@ -1,0 +1,7 @@
+.wrapper{
+    background-color: #555862;
+    color: rgb(var(--pure-material-onprimary-rgb, 0, 0, 0));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
