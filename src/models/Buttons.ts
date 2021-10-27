@@ -4,7 +4,7 @@ export type Button = {
     name:string,
     value:string,
     styles?:string,
-    setValAction?:any,
+    setValAction?:(val:any)=>any,
     disable?:boolean,
 };
 

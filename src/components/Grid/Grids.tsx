@@ -1,35 +1,39 @@
-import { useCallback, useEffect, useState } from "react";
+import {useContext, useCallback, useEffect, useState } from "react";
 import { initGrid, computeNextGrid } from "../../helpers/GridHelpers";
 import { grid,checks } from "../../models/Grid";
 import { MESSAGE_GRID } from "../../helpers/Costants";
+import ResultsContext from "../../store/Result-context";
 import styles from "./Grid.module.css";
 
 const Grids: React.FC<checks> = (props): JSX.Element => {
   
+  //create a custom hooks for initGrid();
   const initialisedGrid: grid = initGrid();
-  const { clicked: isNewGen, disableButton } = props;
+
+  const { clicked: isNewGen, disableButton} = props;
   const [grid, setGrid] = useState<grid>(initialisedGrid);
   const [count, setCount] = useState<number>(0);
   const [listGrid,setListGrid] = useState<any[]>([]);
   const computeNewGrid = useCallback((matrix2d: grid):void =>setGrid(computeNextGrid(matrix2d)),[]);
   const setCountHandler = useCallback(():void => setCount((prevCount) => prevCount + 1),[]);
   
+  const ctx:any=useContext(ResultsContext);
   
   const disableButtonHandler  = useCallback(():void=>{
     const cloneGrid = grid.map(row=>[...row]);
     setListGrid(prevGrid=> [...prevGrid,cloneGrid]);
     disableButton(listGrid);
+    ctx.maxIteration(count);
     // eslint-disable-next-line 
-  },[disableButton,grid]);
+    },[disableButton,grid]);
 
-
+  
   
   useEffect(() => {
     isNewGen !== undefined && setCountHandler();
     isNewGen !== undefined && computeNewGrid(grid);
-    isNewGen !== undefined && disableButtonHandler();  
-  
-  }, [isNewGen, grid, setCountHandler, computeNewGrid,disableButtonHandler]);
+    isNewGen !== undefined && disableButtonHandler();
+  }, [isNewGen, grid, setCountHandler, computeNewGrid, disableButtonHandler]);
   
   return (
     <div className={styles["grid"]}>

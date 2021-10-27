@@ -1,4 +1,6 @@
 import { grid } from "../models/Grid";
+
+
 // import _ from 'lodash';
 //initialise and return a first grid.
 export const initGrid = (): grid => {
@@ -61,4 +63,6 @@ const setupNewGrid=(nextGrid:grid,previousGrid:grid,rows:number,cols:number)=>{
   }
   return nextGrid;
 };
+
+
 
