@@ -22,7 +22,7 @@ const countNeighbors = (grid: grid, x: number, y: number): number => {
 };
 
 //carry out the operation for the new grid.
-const setupNewGrid = (nextGrid: grid, previousGrid: grid, rows: number, cols: number ) => {
+const setupNewGrid = (nextGrid: grid, previousGrid: grid, rows: number, cols: number ):grid => {
   for (let i = 0; i <= rows - 1; i++) {
     for (let j = 0; j <= cols - 1; j++) {
       let state = previousGrid[i][j];
