@@ -6,16 +6,16 @@ import ResultsContext from "../store/Result-context";
 import Modal from "./Modal/Modal";
 
 const Section: React.FC = (): JSX.Element => {
+  const [isEnd, setIsEnd] = useState<boolean>(false);
+  const [nRound, setNround] = useState<number>();
 
-  const [isEnd, setIsEnd] = useState<boolean|null>(false);
-  const [nRound, setNround]=useState<number>();
-  const setModalHandler = useCallback((val:boolean):void=>setIsEnd(val),[]);
-  const closeModalHandler = ():void=>setIsEnd(false);
-  const getMaxRound = (n:number):void =>setNround((n+1));
-  
+  const setModalHandler = useCallback((val: boolean): void => setIsEnd(val),[]);
+  const closeModalHandler = (): void => setIsEnd(false);
+  const getMaxRound = (n: number): void => setNround(n + 1);
+
   return (
     <>
-      <ResultsContext.Provider value={{ maxIteration: getMaxRound, round: nRound }} >
+      <ResultsContext.Provider value={{ maxIteration: getMaxRound, round: nRound, gameOver: isEnd }}>
         <Title text={TITLE} />
         <SetupGame getValModal={setModalHandler} />
         {isEnd && <Modal onConfirm={closeModalHandler} />}

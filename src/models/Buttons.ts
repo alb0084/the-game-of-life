@@ -1,5 +1,4 @@
-
-export type Button = { 
+export type button = { 
     type:string,
     name:string,
     value:string,

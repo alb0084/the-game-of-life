@@ -1,8 +1,8 @@
 import React from "react";
-import {Button} from "../../models/Buttons";
+import {button} from "../../models/Buttons";
 
 
-const ButtonAction:React.FC<Button> =(props): JSX.Element=>{
+const ButtonAction:React.FC<button> =(props): JSX.Element=>{
     const {disable}=props;
     return (
       <div>

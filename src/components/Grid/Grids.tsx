@@ -1,5 +1,6 @@
 import {useContext, useCallback, useEffect, useState } from "react";
-import { initGrid, computeNextGrid } from "../../helpers/GridHelpers";
+import useGrid from "../../hooks/use-initGrid";//custom hooks
+import {computeNextGrid} from "../../helpers/GridHelpers";
 import { grid,checks } from "../../models/Grid";
 import { MESSAGE_GRID } from "../../helpers/Costants";
 import ResultsContext from "../../store/Result-context";
@@ -7,8 +8,8 @@ import styles from "./Grid.module.css";
 
 const Grids: React.FC<checks> = (props): JSX.Element => {
   
-  //create a custom hooks for initGrid();
-  const initialisedGrid: grid = initGrid();
+  
+  const initialisedGrid: grid = useGrid();
 
   const { clicked: isNewGen, disableButton} = props;
   const [grid, setGrid] = useState<grid>(initialisedGrid);
@@ -27,8 +28,6 @@ const Grids: React.FC<checks> = (props): JSX.Element => {
     // eslint-disable-next-line 
     },[disableButton,grid]);
 
-  
-  
   useEffect(() => {
     isNewGen !== undefined && setCountHandler();
     isNewGen !== undefined && computeNewGrid(grid);
