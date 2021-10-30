@@ -10,18 +10,23 @@ import styles2 from "../ButtonAction/ButtonAction.module.css";
 import styles from "./Modal.module.css";
 import { Transition } from "react-transition-group";
 
-const Backdrop:React.FC<modal> = (props: any): JSX.Element => {
+const Backdrop:React.FC<modal> = (props): JSX.Element => {
   return <div className={styles.backdrop} onClick={props.onConfirm}></div>;
 };
 
-const ModalOverlay:React.FC<modal> = (props: any): JSX.Element => {
-  const ctx: any = useContext(ResultsContext);
-  const maxRound = ctx.round;
-  const refreshPage = (): void => window.location.reload();
-  const [modal,setModal] = useState(false);
+const ModalOverlay:React.FC<modal> = (props): JSX.Element => {
+  
+  const ctx: {gameOver:boolean,round:number,maxIteration:(val:number)=>number} = useContext(ResultsContext);
+  const [modal,setModal] = useState<boolean>(false);
+  const maxRound:number = ctx.round;
+  const gameOver:boolean = ctx.gameOver;
+
+  const refreshPage = (): void => window.location.reload();console.log(ctx)
   useEffect(()=>{
-    ctx.gameOver && setModal(ctx.gameOver);
-  },[ctx.gameOver])
+    gameOver && setModal(gameOver);
+  },[gameOver]);
+  
+  
   return (
     <>
       <Transition in={modal} timeout={200}>
