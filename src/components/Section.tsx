@@ -9,7 +9,7 @@ import { JSX } from "../models/ReactHelper";
 const Section: React.FC<any> = (props): JSX => {
   
   const [isEnd, setIsEnd] = useState<boolean>(false);
-  const [nRound, setNround] = useState<number>();
+  const [nRound, setNround] = useState<number>(0);
 
   const setModalHandler = useCallback((val: boolean): void => setIsEnd(val),[]);
   const closeModalHandler = (): void => {setIsEnd(false); window.location.reload() };
