@@ -12,7 +12,7 @@ const Section: React.FC<any> = (props): JSX => {
   const [nRound, setNround] = useState<number>();
 
   const setModalHandler = useCallback((val: boolean): void => setIsEnd(val),[]);
-  const closeModalHandler = (): void => setIsEnd(false);
+  const closeModalHandler = (): void => {setIsEnd(false); window.location.reload() };
   const getMaxRound = (n: number): void => setNround(n + 1);
 
   return (
