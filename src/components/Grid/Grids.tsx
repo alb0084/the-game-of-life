@@ -1,14 +1,14 @@
 import {useContext, useCallback, useEffect, useState } from "react";
-import useGrid from "../../hooks/use-initGrid";//custom hooks
+import useGrid from "../../hooks/use-initGrid"; //custom hooks
 import {computeNextGrid} from "../../helpers/GridHelpers";
-import { grid,checks } from "../../models/Grid";
+import { grid, checks } from "../../models/Grid";
 import { MESSAGE_GRID } from "../../helpers/Costants";
 import ResultsContext from "../../store/Result-context";
+import { JSX } from "../../models/ReactHelper";
 import styles from "./Grid.module.css";
 
-const Grids: React.FC<checks> = (props): JSX.Element => {
-  
-  
+const Grids: React.FC<checks> = (props): JSX => {
+    
   const initialisedGrid: grid = useGrid();
 
   const { clicked: isNewGen, disableButton} = props;

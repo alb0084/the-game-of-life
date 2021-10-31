@@ -4,8 +4,10 @@ import SetupGame from "./Setup/SetupGame";
 import { TITLE } from "../helpers/Costants";
 import ResultsContext from "../store/Result-context";
 import Modal from "./Modal/Modal";
+import { JSX } from "../models/ReactHelper";
 
-const Section: React.FC = (): JSX.Element => {
+const Section: React.FC<any> = (props): JSX => {
+  
   const [isEnd, setIsEnd] = useState<boolean>(false);
   const [nRound, setNround] = useState<number>();
 

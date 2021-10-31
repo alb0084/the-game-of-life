@@ -6,22 +6,23 @@ import ResultsContext from "../../store/Result-context";
 import Card from "../Card/Card";
 import { modal } from "../../models/Modal";
 import { NAME_CLICK, TYPE_BUTTON, TITLE_MODAL_BUTTON, H2_TITLE, MESSAGE_OVERLAY, SUGGESTION} from "../../helpers/Costants";
+import { Transition } from "react-transition-group";
+import { JSX } from "../../models/ReactHelper";
 import styles2 from "../ButtonAction/ButtonAction.module.css";
 import styles from "./Modal.module.css";
-import { Transition } from "react-transition-group";
 
-const Backdrop:React.FC<modal> = (props): JSX.Element => {
+const Backdrop:React.FC<modal> = (props): JSX => {
   return <div className={styles.backdrop} onClick={props.onConfirm}></div>;
 };
 
-const ModalOverlay:React.FC<modal> = (props): JSX.Element => {
+const ModalOverlay:React.FC<modal> = (props): JSX => {
   
   const ctx: {gameOver:boolean,round:number,maxIteration:(val:number)=>number} = useContext(ResultsContext);
   const [modal,setModal] = useState<boolean>(false);
   const maxRound:number = ctx.round;
   const gameOver:boolean = ctx.gameOver;
 
-  const refreshPage = (): void => window.location.reload();console.log(ctx)
+  const refreshPage = (): void => window.location.reload();
   useEffect(()=>{
     gameOver && setModal(gameOver);
   },[gameOver]);
@@ -56,7 +57,8 @@ const ModalOverlay:React.FC<modal> = (props): JSX.Element => {
   );
 };
 
-const Modal:React.FC<modal> = (props): JSX.Element => {
+const Modal:React.FC<modal> = (props): JSX => {
+
   return (
     <>
       {ReactDom.createPortal(

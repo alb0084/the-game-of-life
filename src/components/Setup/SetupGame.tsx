@@ -5,10 +5,10 @@ import { setup } from "../../models/setup";
 import { grid } from "../../models/Grid";
 import ButtonAction from "../ButtonAction/ButtonAction";
 import * as COSTANT from "../../helpers/Costants";
-
+import { JSX } from "../../models/ReactHelper";
 import styles from "../ButtonAction/ButtonAction.module.css";
 
-const SetupGame: React.FC<setup> = (props): JSX.Element => {
+const SetupGame: React.FC<setup> = (props): JSX => {
   const { getValModal } = props;
   const [isClicked, setIsClicked] = useState<boolean>();
   const [isEqual, setIsEqual] = useState<boolean>();
@@ -34,6 +34,7 @@ const SetupGame: React.FC<setup> = (props): JSX.Element => {
   }, [getValModal, isEqual]);
 
   return (
+    
     <>
       <Grids clicked={isClicked!} disableButton={getValueButton} />
       <ButtonAction
