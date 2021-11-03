@@ -5,7 +5,14 @@ import { useContext } from "react";
 import ResultsContext from "../../store/Result-context";
 import Card from "../Card/Card";
 import { modal } from "../../models/Modal";
-import { NAME_CLICK, TYPE_BUTTON, TITLE_MODAL_BUTTON, H2_TITLE, MESSAGE_OVERLAY, SUGGESTION} from "../../helpers/Costants";
+import {
+  NAME_CLICK,
+  TYPE_BUTTON,
+  TITLE_MODAL_BUTTON,
+  H2_TITLE,
+  MESSAGE_OVERLAY,
+  SUGGESTION,
+} from "../../helpers/Costants";
 import { Transition } from "react-transition-group";
 import { JSX } from "../../models/ReactHelper";
 import styles2 from "../ButtonAction/ButtonAction.module.css";

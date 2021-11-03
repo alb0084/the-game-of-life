@@ -12,5 +12,7 @@ export const TITLE_MODAL_BUTTON:string="OK";
 export const H2_TITLE = "GAME OVER";
 export const MESSAGE_OVERLAY = "YOUR MAX ITERATIONS HAVE BEEN";
 export const SUGGESTION = "CLICK OK TO RESTART AGAIN."
+export const COLUMNS = "COLUMNS";
+export const ROWS = "ROWS";
 
 

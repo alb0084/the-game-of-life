@@ -2,7 +2,7 @@ import {useContext, useCallback, useEffect, useState } from "react";
 import useGrid from "../../hooks/use-initGrid"; //custom hooks
 import {computeNextGrid} from "../../helpers/GridHelpers";
 import { grid, checks } from "../../models/Grid";
-import { MESSAGE_GRID } from "../../helpers/Costants";
+import { MESSAGE_GRID, COLUMNS, ROWS} from "../../helpers/Costants";
 import ResultsContext from "../../store/Result-context";
 import { JSX } from "../../models/ReactHelper";
 import styles from "./Grid.module.css";
@@ -17,7 +17,8 @@ const Grids: React.FC<checks> = (props): JSX => {
   const [listGrid,setListGrid] = useState<any[]>([]);
   const computeNewGrid = useCallback((matrix2d: grid):void =>setGrid(computeNextGrid(matrix2d)),[]);
   const setCountHandler = useCallback(():void => setCount((prevCount) => prevCount + 1),[]);
-  
+  const gridRows:number = grid[0].length;
+  const gridColumns:number = grid.length;
   const ctx:any=useContext(ResultsContext);
   
   const disableButtonHandler  = useCallback(():void=>{
@@ -36,7 +37,7 @@ const Grids: React.FC<checks> = (props): JSX => {
   
   return (
     <div className={styles["grid"]}>
-      <div className={styles["panel-count"]}>{`${MESSAGE_GRID}: ${count}`}</div>
+      <div className={styles["panel-count"]}>{`${MESSAGE_GRID}: ${count},   ${ROWS}: ${gridRows}, ${COLUMNS}: ${gridColumns}.`}</div>
       <table className={styles["table-style"]}>
             <tbody>
               {grid.map((row, i, _) => {
